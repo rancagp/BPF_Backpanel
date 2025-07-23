@@ -5,13 +5,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Rifan Financindo Berjangka">
-    <meta name="author" content="Muhammad Faturrahman Putra">
+    <meta name="description" content="KontakPerkasa Futures">
+    <meta name="author" content="Ranca Gigih Pramuditha">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('namaPage') - Rifan Financindo Berjangka</title>
+    <title>@yield('namaPage') - KontakPerkasa Futures</title>
 
     <!-- Fonts -->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
@@ -23,7 +23,67 @@
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
     <!-- Favicon -->
-    <link href="{{ asset('img/cover-login.png') }}" rel="icon" type="image/png">
+    <link href="{{ asset('img/logo-kpf.png') }}" rel="icon" type="image/png">
+    
+    <style>
+        /* Style untuk hover pada nav item */
+        .sidebar .nav-item .nav-link:hover {
+            background-color: #f8f9fc;
+            color: #199447 !important;
+        }
+        
+        .sidebar .nav-item .nav-link:hover i,
+        .sidebar .nav-item .nav-link:hover span {
+            color: #199447 !important;
+        }
+        
+        /* Style untuk active state */
+        .sidebar .nav-item.active > .nav-link,
+        .sidebar .nav-item .collapse-item.active {
+            background-color: #f8f9fc;
+            color: #199447 !important;
+            font-weight: 600;
+        }
+        
+        .sidebar .nav-item.active > .nav-link i,
+        .sidebar .nav-item .collapse-item.active i {
+            color: #199447 !important;
+        }
+        
+        /* Style untuk submenu */
+        .sidebar .collapse-item {
+            color: #6c757d !important; /* Pastikan warna abu muda konsisten */
+        }
+        
+        /* Style untuk submenu yang belum aktif */
+        .sidebar .collapse-item:not(.active) {
+            color: #6c757d !important;
+        }
+        
+        .sidebar .collapse-item:hover,
+        .sidebar .collapse-item:focus {
+            background-color: #f8f9fc;
+            color: #199447 !important;
+        }
+        
+        .sidebar .collapse-item.active {
+            background-color: #f8f9fc;
+            color: #199447 !important;
+            font-weight: 600;
+        }
+        
+        /* Menghilangkan warna biru pada active submenu */
+        .sidebar .collapse-item:active,
+        .sidebar .collapse-item.active:active {
+            background-color: #f8f9fc !important;
+            color: #199447 !important;
+        }
+        
+        /* Memastikan teks submenu berwarna abu muda saat default */
+        .sidebar .collapse-item {
+            color: #6c757d !important;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -31,19 +91,13 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion z-200" id="accordionSidebar">
+        <ul class="navbar-nav bg-white sidebar sidebar-light accordion z-200 shadow" id="accordionSidebar" style="background-color: #ffffff !important;">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                 <div class="sidebar-brand-icon">
-                    <img src="{{ asset('img/logo-rfb.png') }}" alt="Logo RFB" class="img-fluid"
-                        style="width: 30px; height: auto;">
-                </div>
-                <div class="sidebar-brand-text mx-3">
-                    <div class="d-flex flex-column">
-                        <span>Rifan</span>
-                        <span>Financindo</span>
-                    </div>
+                    <img src="{{ asset('img/logo-kpf-full.png') }}" alt="Logo KPF" class="img-fluid"
+                        style="width: 1000px; height: auto;">
                 </div>
             </a>
 
@@ -52,16 +106,16 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item {{ Nav::isRoute('home') }}">
-                <a class="nav-link" href="{{ route('home') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>{{ __('Dashboard') }}</span></a>
+                <a class="nav-link {{ Nav::isRoute('home') }}" href="{{ route('home') }}" style="color: #00000;">
+                    <i class="fas fa-fw fa-tachometer-alt" style="color: #00000;"></i>
+                    <span style="color: #00000;">{{ __('Dashboard') }}</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            <div class="sidebar-heading" style="color: #00000;">
                 {{ __('Menu') }}
             </div>
 
@@ -69,9 +123,9 @@
             <li class="nav-item {{ Nav::isRoute('jfx.*') || Nav::isRoute('spa.*') ? 'active' : '' }}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduk"
                     aria-expanded="{{ Nav::isRoute('jfx.*') || Nav::isRoute('spa.*') ? 'true' : 'false' }}"
-                    aria-controls="collapseProduk">
-                    <i class="fas fa-box-open"></i>
-                    <span>Produk</span>
+                    aria-controls="collapseProduk" style="color: #00000;">
+                    <i class="fas fa-box-open" style="color: #00000;"></i>
+                    <span style="color: #00000;">Produk</span>
                 </a>
                 <div id="collapseProduk" class="collapse" aria-labelledby="headingProduk"
                     data-parent="#accordionSidebar">
@@ -91,9 +145,9 @@
 
             <!-- Nav Item - Profile -->
             <li class="nav-item {{ Nav::isRoute('berita.*') }}">
-                <a class="nav-link" href="{{ route('berita.index') }}">
-                    <i class="fa-solid fa-newspaper"></i>
-                    <span>{{ __('Berita') }}</span>
+                <a class="nav-link" href="{{ route('berita.index') }}" style="color: #00000;">
+                    <i class="fa-solid fa-newspaper" style="color: #00000;"></i>
+                    <span style="color: #00000;">{{ __('Berita') }}</span>
                 </a>
             </li>
 
@@ -101,62 +155,62 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            <div class="sidebar-heading" style="color: #00000;">
                 {{ __('Pengaturan') }}
             </div>
 
             <!-- Nav Item - Profile -->
             <li class="nav-item {{ Nav::isRoute('profileWeb.*') }}">
-                <a class="nav-link" href="{{route('profileWeb.index')}}">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>{{ __('Profile') }}</span>
+                <a class="nav-link" href="{{route('profileWeb.index')}}" style="color: #00000;">
+                    <i class="fas fa-fw fa-user" style="color: #00000;"></i>
+                    <span style="color: #00000;">{{ __('Profile') }}</span>
                 </a>
             </li>
 
             <!-- Nav Item - About -->
             <li class="nav-item {{ Nav::isRoute('kategori-wakil.*') }}">
-                <a class="nav-link" href="{{route('kategori-wakil.index')}}">
-                    <i class="fas fa-fw fa-hands-helping"></i>
-                    <span>{{ __('Wakil Pialang') }}</span>
+                <a class="nav-link" href="{{route('kategori-wakil.index')}}" style="color: #00000;">
+                    <i class="fas fa-fw fa-hands-helping" style="color: #00000;"></i>
+                    <span style="color: #00000;">{{ __('Wakil Pialang') }}</span>
                 </a>
             </li>
 
             <!-- Nav Item - About -->
             <li class="nav-item {{ Nav::isRoute('banner.*') }}">
-                <a class="nav-link" href="{{route('banner.index')}}">
-                    <i class="fa-solid fa-images"></i>
-                    <span>{{ __('Banner') }}</span>
+                <a class="nav-link" href="{{route('banner.index')}}" style="color: #00000;">
+                    <i class="fa-solid fa-images" style="color: #00000;"></i>
+                    <span style="color: #00000;">{{ __('Banner') }}</span>
                 </a>
             </li>
 
             <!-- Nav Item - About -->
             <li class="nav-item {{ Nav::isRoute('galeri.*') }}">
-                <a class="nav-link" href="">
-                    <i class="fa-solid fa-image"></i>
-                    <span>{{ __('Galeri') }}</span>
+                <a class="nav-link" href="" style="color: #00000;">
+                    <i class="fa-solid fa-image" style="color: #00000;"></i>
+                    <span style="color: #00000;">{{ __('Galeri') }}</span>
                 </a>
             </li>
 
             <!-- Nav Item - About -->
             <li class="nav-item {{ Nav::isRoute('file.*') }}">
-                <a class="nav-link" href="">
-                    <i class="fa-solid fa-file"></i>
-                    <span>{{ __('File Unduhan') }}</span>
+                <a class="nav-link" href="" style="color: #00000;">
+                    <i class="fa-solid fa-file" style="color: #00000;"></i>
+                    <span style="color: #00000;">{{ __('File Unduhan') }}</span>
                 </a>
             </li>
 
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            <div class="sidebar-heading" style="color: #00000;">
                 {{ __('Manajemen Pengguna') }}
             </div>
 
             <!-- Nav Item - Profile -->
             <li class="nav-item {{ Nav::isRoute('user.*') }}">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>{{ __('User') }}</span>
+                <a class="nav-link" href="" style="color: #00000;">
+                    <i class="fas fa-fw fa-user" style="color: #00000;"></i>
+                    <span style="color: #00000;">{{ __('User') }}</span>
                 </a>
             </li>
 
@@ -219,7 +273,8 @@
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name
                                     }}</span>
                                 <figure class="img-profile rounded-circle avatar font-weight-bold"
-                                    data-initial="{{ Auth::user()->name[0] }}"></figure>
+                                    data-initial="{{ Auth::user()->name[0] }}" 
+                                    style="background-color: #199447 !important;"></figure>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

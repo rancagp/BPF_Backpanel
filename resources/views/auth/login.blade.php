@@ -1,73 +1,141 @@
 @extends('layouts.auth')
 
 @section('main-content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-xl-10 col-lg-12 col-md-9">
-            <div class="card o-hidden border-0 shadow-lg my-5">
-                <div class="card-body p-0">
-                    <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block bg-white">
-                            <div class="h-100 d-flex flex-column align-items-center justify-content-center text-center">
-                                <img src="{{ asset('img/logo-kpf.png') }}" alt="Logo KPF" class="img-fluid p-4"
-                                    style="max-height: 200px; object-fit: contain;">
-                                <h2 class="mt-3 mb-0 font-weight-bold text-dark">KontakPerkasa Futures</h2>
-                            </div>
+<div class="container d-flex align-items-center" style="min-height: 100vh;">
+    <div class="row justify-content-center w-100">
+        <div class="col-lg-5 col-md-7">
+            <div class="bg-white rounded shadow-sm p-4">
+                <!-- Error Message Container - Fixed Height -->
+                <div class="error-container" style="min-height: 40px; margin-bottom: 0.5rem;">
+                    @if ($errors->any())
+                        <div class="alert alert-danger py-1 px-2 mb-2" role="alert" style="font-size: 0.75rem; line-height: 1.2;">
+                            <ul class="mb-0 ps-3">
+                                @foreach ($errors->all() as $error)
+                                    <li style="font-size: 0.75rem;">{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
-                        <div class="col-lg-6" style="background-color: #166534;">
-                            <div class="p-5">
-                                <div class="text-center">
-                                                                        <h1 class="h4 text-white mb-4">{{ __('Login') }}</h1>
-                                </div>
+                    @endif
+                </div>
+                
+                <!-- Login Form -->
+                <div class="text-center mb-5">
+                    <img src="{{ asset('img/logo-kpf.png') }}" alt="Logo KPF" class="img-fluid" style="max-height: 50px;">
+                    <h1 class="h5 fw-bold mt-2 mb-1" style="color: #166534;">KONTAKPERKASA FUTURES</h1>
+                </div>
 
-                                @if ($errors->any())
-                                <div class="alert alert-danger border-left-danger" role="alert">
-                                    <ul class="pl-4 my-2">
-                                        @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                @endif
-
-                                <form method="POST" action="{{ route('login') }}" class="user">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                                    <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" name="email"
-                                            placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required
-                                            autofocus>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" name="password"
-                                            placeholder="{{ __('Password') }}" required>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" name="remember"
-                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                                                        <label class="custom-control-label text-white" for="remember">{{ __('Remember Me')
-                                                }}</label>
-                                        </div>
-                                    </div>
-
-                                    <hr>
-
-                                    <div class="form-group">
-                                        <button type="submit"
-                                            class="btn btn-primary text-light font-weight-bold btn-user btn-block">
-                                            {{ __('Login') }}
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    
+                    <div class="mb-2">
+                        <label for="email" class="form-label fw-500 small mb-1">Email</label>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-light"><i class="fas fa-envelope text-muted"></i></span>
+                            <input type="email" class="form-control form-control-sm" id="email" name="email" 
+                                   value="{{ old('email') }}" required autofocus
+                                   placeholder="Masukkan email Anda">
                         </div>
                     </div>
+
+                    <div class="mb-2">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <label for="password" class="form-label fw-500 small mb-1">Password</label>
+                            @if (Route::has('password.request'))
+                                <a href="{{ route('password.request') }}" class="text-decoration-none small">
+                                    Lupa password?
+                                </a>
+                            @endif
+                        </div>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-light"><i class="fas fa-lock text-muted"></i></span>
+                            <input type="password" class="form-control form-control-sm" id="password" name="password" required
+                                   placeholder="Masukkan password Anda">
+                            <button class="btn btn-outline-secondary toggle-password" type="button" style="font-size: 0.8rem;">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} style="transform: scale(0.9);">
+                        <label class="form-check-label small text-muted" for="remember">
+                            Ingat saya
+                        </label>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn-login btn-sm py-2 mt-1">
+                            <i class="fas fa-sign-in-alt me-2"></i>Masuk
+                        </button>
+                        
+                        <p class="text-center mt-2 small mb-0">
+                            Belum punya akun? 
+                            <a href="{{ route('register') }}" class="text-primary text-decoration-none fw-medium">
+                                Daftar di sini
+                            </a>
+                        </p>
+                    </div>
+                </form>
+
+                <div class="text-center mt-3">
+                    <p class="text-muted small" style="font-size: 0.8rem;">
+                        &copy; {{ date('Y') }} KontakPerkasa Futures. All rights reserved.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script>
+    // Toggle password visibility
+    document.querySelectorAll('.toggle-password').forEach(button => {
+        button.addEventListener('click', function() {
+            const passwordInput = this.previousElementSibling;
+            const icon = this.querySelector('i');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+    });
+</script>
+@endpush
+
+<style>
+    /* Additional styles specific to login page */
+    .toggle-password {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        background-color: #f8f9fa;
+        border: 1px solid #e2e8f0;
+        border-left: none;
+    }
+    
+    .toggle-password:hover {
+        background-color: #e9ecef;
+    }
+    
+    .input-group-text {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: none;
+    }
+    
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #dee2e6;
+    }
+    
+    .form-control:focus + .input-group-text {
+        border-color: #dee2e6;
+    }
+</style>
 @endsection

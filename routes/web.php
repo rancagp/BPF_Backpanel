@@ -12,11 +12,11 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-// Autentikasi tanpa register, reset, dan verify
+// Autentikasi dengan register, tanpa reset dan verify
 Auth::routes([
-    'register' => false,
+    'register' => true,
     'reset'    => false,
-    'verify'   => false,
+    'verify'   => true,
 ]);
 
 // Home dan Profile
