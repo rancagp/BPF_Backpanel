@@ -21,7 +21,7 @@
                 <!-- Login Form -->
                 <div class="text-center mb-5">
                     <img src="{{ asset('img/logo-kpf.png') }}" alt="Logo KPF" class="img-fluid" style="max-height: 50px;">
-                    <h1 class="h5 fw-bold mt-2 mb-1" style="color: #166534;">KONTAKPERKASA FUTURES</h1>
+                    <h1 class="h5 fw-bold mt-2 mb-1" style="color: #199447;">KONTAKPERKASA FUTURES</h1>
                 </div>
 
                 <form method="POST" action="{{ route('login') }}">

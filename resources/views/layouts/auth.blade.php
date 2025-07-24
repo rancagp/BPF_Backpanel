@@ -27,7 +27,7 @@
     <style>
         :root {
             --primary-color: #166534;
-            --secondary-color: #22c55e;
+            --secondary-color: #199447;
             --accent-color: #3b82f6;
             --light-bg: #f8fafc;
         }
@@ -111,7 +111,7 @@
         }
         
         .btn-login {
-            background: var(--primary-color);
+            background: var(--secondary-color);
             border: none;
             color: white;
             padding: 6px 16px;
