@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BannerController as ApiBannerController;
 use App\Http\Controllers\Api\BeritaController;
 use App\Http\Controllers\Api\JfxController;
 use App\Http\Controllers\Api\KategoriWakilPialangController;
@@ -27,6 +28,9 @@ Route::get('/berita', [BeritaController::class, 'index']);
 Route::get('/berita/{slug}', [BeritaController::class, 'show']);
 
 Route::get('/jfx', [JfxController::class, 'index']);
+
+// Banner API Routes
+Route::get('/banners', [ApiBannerController::class, 'index']);
 Route::get('/jfx/{slug}', [JfxController::class, 'show']);
 
 Route::get('/spa', [SpaController::class, 'index']);
@@ -35,3 +39,10 @@ Route::get('/spa/{slug}', [SpaController::class, 'show']);
 Route::get('/kategori-wakil-pialang', [KategoriWakilPialangController::class, 'index']);
 
 Route::get('/wakil-pialang', [WakilPialangController::class, 'index']);
+
+// Banner API
+Route::get('/banners', [ApiBannerController::class, 'index']);
+Route::get('/banners/{id}', [ApiBannerController::class, 'show']);
+Route::post('/banners', [ApiBannerController::class, 'store']);
+Route::put('/banners/{id}', [ApiBannerController::class, 'update']);
+Route::delete('/banners/{id}', [ApiBannerController::class, 'destroy']);
