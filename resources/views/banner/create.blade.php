@@ -4,6 +4,27 @@
 
 @section('main-content')
 <div class="container-fluid">
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul class="mb-0">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -55,7 +76,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="order">Urutan</label>
-                                <input type="number" class="form-control @error('order') is-invalid @enderror" id="order" name="order" value="{{ old('order', 0) }}" min="0">
+                                <input type="number" class="form-control @error('order') is-invalid @enderror" id="order" name="order" value="{{ old('order', $defaultOrder) }}" min="1" max="{{ $totalBanners + 1 }}">
                                 @error('order')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
