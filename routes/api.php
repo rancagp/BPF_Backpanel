@@ -36,8 +36,14 @@ Route::get('/jfx/{slug}', [JfxController::class, 'show']);
 Route::get('/spa', [SpaController::class, 'index']);
 Route::get('/spa/{slug}', [SpaController::class, 'show']);
 
-Route::get('/kategori-wakil-pialang', [KategoriWakilPialangController::class, 'index']);
+// Kategori Wakil Pialang API
+Route::prefix('kategori-wakil-pialang')->group(function () {
+    Route::get('/', [KategoriWakilPialangController::class, 'index']);
+    Route::get('/{slug}', [KategoriWakilPialangController::class, 'showBySlug']);
+    Route::get('/{slug}/wakil', [KategoriWakilPialangController::class, 'getWakilByKategori']);
+});
 
+// Wakil Pialang API
 Route::get('/wakil-pialang', [WakilPialangController::class, 'index']);
 
 // Banner API

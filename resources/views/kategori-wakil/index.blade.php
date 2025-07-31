@@ -6,7 +6,7 @@
 <!-- Page Heading -->
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h1 class="h3 m-0 text-gray-800">{{ __('Kategori Wakil Pialang') }}</h1>
-    <a href="{{ route('kategori-wakil.create') }}" class="btn btn-primary">Tambah</a>
+    <a href="{{ route('kategori-wakil.create') }}" class="btn btn-success">Tambah</a>
 </div>
 
 @if (session('success'))
@@ -36,10 +36,10 @@
 <div class="row">
     @forelse ($kategori as $item)
     <div class="col-12 col-sm-6 col-lg-4 mb-4">
-        <div class="card border-left-primary shadow h-100 p-3">
+        <div class="card border-left-success shadow h-100 p-3">
             <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
                 <!-- Teks di kiri -->
-                <div class="d-flex align-items-center text-primary mb-3 mb-md-0">
+                <div class="d-flex align-items-center text-success mb-3 mb-md-0">
                     <i class="fa-solid fa-2x fa-location-dot mr-3"></i>
                     <div>
                         <h5 class="mb-1 font-weight-bold">{{ $item->nama_kategori }}</h5>
@@ -48,24 +48,26 @@
                 </div>
 
                 <!-- Tombol container di kanan -->
-                <div class="d-flex flex-wrap justify-content-start align-items-center justify-content-md-end">
-                    <!-- Tombol "Lihat" -->
-                    <a href="{{ route('wakil.index', $item->slug) }}"
-                        class="btn btn-sm btn-success rounded-pill px-3 mr-2">
-                        Lihat
-                    </a>
+                <div class="d-flex flex-nowrap align-items-center mt-2 mt-md-0">
+                    <div class="btn-group" role="group">
+                        <!-- Tombol "Lihat" -->
+                        <a href="{{ route('wakil.index', $item->slug) }}"
+                            class="btn btn-sm btn-primary rounded-pill px-3 mr-1">
+                            <i class="fas fa-eye"></i>
+                        </a>
 
-                    <!-- Tombol "Edit" -->
-                    <a href="{{ route('kategori-wakil.edit', $item->id) }}"
-                        class="btn btn-sm btn-warning rounded-pill px-3 mr-2">
-                        Edit
-                    </a>
+                        <!-- Tombol "Edit" -->
+                        <a href="{{ route('kategori-wakil.edit', $item->id) }}"
+                            class="btn btn-sm btn-warning rounded-pill px-3 mr-1">
+                            <i class="fas fa-edit"></i>
+                        </a>
 
-                    <!-- Tombol Hapus yang akan membuka modal -->
-                    <button type="button" class="btn btn-sm btn-danger rounded-pill px-3" data-toggle="modal"
-                        data-target="#hapusModal{{ $item->id }}">
-                        Hapus
-                    </button>
+                        <!-- Tombol Hapus yang akan membuka modal -->
+                        <button type="button" class="btn btn-sm btn-danger rounded-pill px-3" data-toggle="modal"
+                            data-target="#hapusModal{{ $item->id }}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
