@@ -3,11 +3,6 @@
 @section('namaPage', 'Kategori Wakil Pialang')
 
 @section('main-content')
-<!-- Page Heading -->
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="h3 m-0 text-gray-800">{{ __('Kategori Wakil Pialang') }}</h1>
-    <a href="{{ route('kategori-wakil.create') }}" class="btn btn-success">Tambah</a>
-</div>
 
 @if (session('success'))
 <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
@@ -33,80 +28,99 @@
 </div>
 @endif
 
-<div class="row">
-    @forelse ($kategori as $item)
-    <div class="col-12 col-sm-6 col-lg-4 mb-4">
-        <div class="card border-left-success shadow h-100 p-3">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                <!-- Teks di kiri -->
-                <div class="d-flex align-items-center text-success mb-3 mb-md-0">
-                    <i class="fa-solid fa-2x fa-location-dot mr-3"></i>
-                    <div>
-                        <h5 class="mb-1 font-weight-bold">{{ $item->nama_kategori }}</h5>
-                        <small class="text-muted">{{ $item->wakil_pialang_count }} Wakil Pialang</small>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <h5 class="m-0 text-gray-800 font-weight-bold">Daftar Kategori Wakil Pialang</h5>
+            <a href="{{ route('kategori-wakil.create') }}" class="btn btn-primary btn-sm shadow">
+                <i class="fas fa-plus"></i> Tambah Kategori
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        @if($kategori->count() > 0)
+            <div class="row">
+                @foreach($kategori as $item)
+                <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                    <div class="card border-left-success shadow h-100">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-folder-open fa-2x text-success mr-3"></i>
+                                <div>
+                                    <h5 class="font-weight-bold text-gray-800 mb-1">{{ $item->nama_kategori }}</h5>
+                                    <span class="badge badge-info">{{ $item->wakil_pialang_count }} Wakil Pialang</span>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-end">
+                                <a href="{{ route('wakil.index', $item->slug) }}" 
+                                   class="btn btn-sm btn-success mx-1"
+                                   title="Lihat Daftar">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="{{ route('kategori-wakil.edit', $item->id) }}" 
+                                   class="btn btn-sm btn-primary mx-1"
+                                   title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <button type="button" 
+                                        class="btn btn-sm btn-danger mx-1" 
+                                        data-toggle="modal" 
+                                        data-target="#hapusModal{{ $item->id }}"
+                                        title="Hapus">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Tombol container di kanan -->
-                <div class="d-flex flex-nowrap align-items-center mt-2 mt-md-0">
-                    <div class="btn-group" role="group">
-                        <!-- Tombol "Lihat" -->
-                        <a href="{{ route('wakil.index', $item->slug) }}"
-                            class="btn btn-sm btn-primary rounded-pill px-3 mr-1">
-                            <i class="fas fa-eye"></i>
-                        </a>
-
-                        <!-- Tombol "Edit" -->
-                        <a href="{{ route('kategori-wakil.edit', $item->id) }}"
-                            class="btn btn-sm btn-warning rounded-pill px-3 mr-1">
-                            <i class="fas fa-edit"></i>
-                        </a>
-
-                        <!-- Tombol Hapus yang akan membuka modal -->
-                        <button type="button" class="btn btn-sm btn-danger rounded-pill px-3" data-toggle="modal"
-                            data-target="#hapusModal{{ $item->id }}">
-                            <i class="fas fa-trash"></i>
-                        </button>
+                <!-- Modal Hapus -->
+                <div class="modal fade" id="hapusModal{{ $item->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="hapusModalLabel{{ $item->id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="hapusModalLabel{{ $item->id }}">Konfirmasi Hapus</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Apakah Anda yakin ingin menghapus kategori "{{ $item->nama_kategori }}"? 
+                                Semua data wakil pialang dalam kategori ini juga akan dihapus.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                <form action="{{ route('kategori-wakil.destroy', $item->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-        </div>
-    </div>
-
-    <!-- Modal Hapus -->
-    <div class="modal fade" id="hapusModal{{ $item->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="hapusModalLabel{{ $item->id }}" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="hapusModalLabel{{ $item->id }}">Konfirmasi Hapus</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Apakah Anda yakin ingin menghapus kategori "{{ $item->nama_kategori }}"? Proses ini tidak dapat
-                    dibatalkan.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <!-- Form hapus kategori -->
-                    <form action="{{ route('kategori-wakil.destroy', $item->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Hapus</button>
-                    </form>
-                </div>
+        @else
+            <div class="text-center py-4">
+                <i class="fas fa-folder-open fa-4x text-gray-300 mb-3"></i>
+                <p class="text-muted">Tidak ada data Kategori Wakil Pialang.</p>
+                <a href="{{ route('kategori-wakil.create') }}" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Tambah Kategori
+                </a>
             </div>
+        @endif
+    </div>
+    
+    @if($kategori->count() > 0)
+    <div class="card-footer">
+        <div class="text-right text-muted">
+            <p class="mb-0"><strong>Jumlah Kategori:</strong> <span>{{ $kategori->count() }} Kategori</span></p>
         </div>
     </div>
-    @empty
-    <div class="container">
-        <div class="alert alert-warning border-left-warning text-center">
-            Tidak ada data Kategori Wakil Pialang.
-        </div>
-    </div>
-    @endforelse
+    @endif
 </div>
 
 @endsection

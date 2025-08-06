@@ -24,15 +24,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Berita API Routes
 Route::get('/berita', [BeritaController::class, 'index']);
 Route::get('/berita/{slug}', [BeritaController::class, 'show']);
 
+// JFX API Routes
 Route::get('/jfx', [JfxController::class, 'index']);
 
 // Banner API Routes
 Route::get('/banners', [ApiBannerController::class, 'index']);
 Route::get('/jfx/{slug}', [JfxController::class, 'show']);
 
+// SPA API Routes
 Route::get('/spa', [SpaController::class, 'index']);
 Route::get('/spa/{slug}', [SpaController::class, 'show']);
 
