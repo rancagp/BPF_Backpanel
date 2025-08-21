@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "ext-pdo_mysql": "*",
         "devmarketer/easynav": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^12.3.0",
