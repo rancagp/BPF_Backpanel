@@ -160,12 +160,12 @@
             </div>
 
             <!-- Nav Item - Profile -->
-            <li class="nav-item {{ Nav::isRoute('profileWeb.*') }}">
+            <!--li class="nav-item {{ Nav::isRoute('profileWeb.*') }}">
                 <a class="nav-link" href="{{route('profileWeb.index')}}" style="color: #00000;">
                     <i class="fas fa-fw fa-user" style="color: #00000;"></i>
                     <span style="color: #00000;">{{ __('Profile') }}</span>
                 </a>
-            </li>
+            </li>-->
 
             <!-- Nav Item - About -->
             <li class="nav-item {{ Nav::isRoute('kategori-wakil.*') }}">
@@ -184,35 +184,35 @@
             </li>
 
             <!-- Nav Item - About -->
-            <li class="nav-item {{ Nav::isRoute('galeri.*') }}">
+            <!--li class="nav-item {{ Nav::isRoute('galeri.*') }}">
                 <a class="nav-link" href="" style="color: #00000;">
                     <i class="fa-solid fa-image" style="color: #00000;"></i>
                     <span style="color: #00000;">{{ __('Galeri') }}</span>
                 </a>
-            </li>
+            </li>-->
 
             <!-- Nav Item - About -->
-            <li class="nav-item {{ Nav::isRoute('file.*') }}">
+            <!--li class="nav-item {{ Nav::isRoute('file.*') }}">
                 <a class="nav-link" href="" style="color: #00000;">
                     <i class="fa-solid fa-file" style="color: #00000;"></i>
                     <span style="color: #00000;">{{ __('File Unduhan') }}</span>
                 </a>
-            </li>
+            </li>-->
 
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading" style="color: #00000;">
+            <!--div class="sidebar-heading" style="color: #00000;">
                 {{ __('Manajemen Pengguna') }}
-            </div>
+            </div-->
 
             <!-- Nav Item - Profile -->
-            <li class="nav-item {{ Nav::isRoute('user.*') }}">
+            <!--li class="nav-item {{ Nav::isRoute('user.*') }}">
                 <a class="nav-link" href="" style="color: #00000;">
                     <i class="fas fa-fw fa-user" style="color: #00000;"></i>
                     <span style="color: #00000;">{{ __('User') }}</span>
                 </a>
-            </li>
+            </li>-->
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
