@@ -147,7 +147,7 @@
             <li class="nav-item {{ Nav::isRoute('berita.*') }}">
                 <a class="nav-link" href="{{ route('berita.index') }}" style="color: #00000;">
                     <i class="fa-solid fa-newspaper" style="color: #00000;"></i>
-                    <span style="color: #00000;">{{ __('Berita') }}</span>
+                    <span style="color: #00000;">{{ __('pengumuman') }}</span>
                 </a>
             </li>
 
