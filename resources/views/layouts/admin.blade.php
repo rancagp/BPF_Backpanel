@@ -5,13 +5,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="KontakPerkasa Futures">
+    <meta name="description" content="EquityWorld Futures">
     <meta name="author" content="Ranca Gigih Pramuditha">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('namaPage') - KontakPerkasa Futures</title>
+    <title>@yield('namaPage') - EquityWorld Futures</title>
 
     <!-- Fonts -->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
@@ -23,65 +23,101 @@
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
     <!-- Favicon -->
-    <link href="{{ asset('img/logo-kpf.png') }}" rel="icon" type="image/png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('favicon/site.webmanifest') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon/favicon.ico') }}">
+    <meta name="theme-color" content="#ffffff">
     
     <style>
-        /* Style untuk hover pada nav item */
+        /* Global Styles */
+        :root {
+            --ewf-orange: #F2AC59;
+            --ewf-gray: #9B9FA7;
+            --ewf-dark-gray: #4C4C4C;
+            --ewf-white: #FFFFFF;
+            --ewf-black: #000000;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            background-color: var(--ewf-white) !important;
+        }
+
+        /* Hover State */
         .sidebar .nav-item .nav-link:hover {
-            background-color: #f8f9fc;
-            color: #199447 !important;
+            background-color: rgba(242, 172, 89, 0.1);
+            color: var(--ewf-orange) !important;
         }
         
         .sidebar .nav-item .nav-link:hover i,
         .sidebar .nav-item .nav-link:hover span {
-            color: #199447 !important;
+            color: var(--ewf-orange) !important;
         }
         
-        /* Style untuk active state */
+        /* Active State */
         .sidebar .nav-item.active > .nav-link,
         .sidebar .nav-item .collapse-item.active {
-            background-color: #f8f9fc;
-            color: #199447 !important;
+            background-color: rgba(242, 172, 89, 0.1);
+            color: var(--ewf-orange) !important;
             font-weight: 600;
+            border-left: 3px solid var(--ewf-orange);
         }
         
         .sidebar .nav-item.active > .nav-link i,
         .sidebar .nav-item .collapse-item.active i {
-            color: #199447 !important;
+            color: var(--ewf-orange) !important;
         }
         
-        /* Style untuk submenu */
+        /* Submenu Styles */
         .sidebar .collapse-item {
-            color: #6c757d !important; /* Pastikan warna abu muda konsisten */
+            color: var(--ewf-dark-gray) !important;
         }
         
-        /* Style untuk submenu yang belum aktif */
         .sidebar .collapse-item:not(.active) {
-            color: #6c757d !important;
+            color: var(--ewf-dark-gray) !important;
         }
         
         .sidebar .collapse-item:hover,
         .sidebar .collapse-item:focus {
-            background-color: #f8f9fc;
-            color: #199447 !important;
+            background-color: rgba(242, 172, 89, 0.1);
+            color: var(--ewf-orange) !important;
         }
         
         .sidebar .collapse-item.active {
-            background-color: #f8f9fc;
-            color: #199447 !important;
+            background-color: rgba(242, 172, 89, 0.1);
+            color: var(--ewf-orange) !important;
             font-weight: 600;
         }
         
-        /* Menghilangkan warna biru pada active submenu */
-        .sidebar .collapse-item:active,
-        .sidebar .collapse-item.active:active {
-            background-color: #f8f9fc !important;
-            color: #199447 !important;
+        /* Top Navigation */
+        .topbar {
+            background-color: var(--ewf-white);
+            border-bottom: 1px solid #eee;
         }
-        
-        /* Memastikan teks submenu berwarna abu muda saat default */
-        .sidebar .collapse-item {
-            color: #6c757d !important;
+
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--ewf-orange);
+            border-color: var(--ewf-orange);
+        }
+
+        .btn-primary:hover {
+            background-color: #e09b3f;
+            border-color: #e09b3f;
+        }
+
+        /* Text Colors */
+        .text-primary {
+            color: var(--ewf-orange) !important;
+        }
+
+        /* Card Header */
+        .card-header {
+            background-color: var(--ewf-white);
+            border-bottom: 1px solid #eee;
+            color: var(--ewf-dark-gray);
         }
     </style>
 </head>
@@ -91,12 +127,12 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-white sidebar sidebar-light accordion z-200 shadow" id="accordionSidebar" style="background-color: #ffffff !important;">
+        <ul class="navbar-nav bg-white sidebar sidebar-light accordion z-200 shadow" id="accordionSidebar" style="background-color: #ffffff !important; border-right: 1px solid #eee;">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                 <div class="sidebar-brand-icon">
-                    <img src="{{ asset('img/logo-kpf-full.png') }}" alt="Logo KPF" class="img-fluid"
+                    <img src="{{ asset('img/ewf-logo2.png') }}" alt="Logo EWF" class="img-fluid"
                         style="width: 1000px; height: auto;">
                 </div>
             </a>
@@ -232,7 +268,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" style="border-bottom: 1px solid #eee;">
 
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -274,20 +310,20 @@
                                     }}</span>
                                 <figure class="img-profile rounded-circle avatar font-weight-bold"
                                     data-initial="{{ Auth::user()->name[0] }}" 
-                                    style="background-color: #199447 !important;"></figure>
+                                    style="background-color: var(--ewf-orange) !important;"></figure>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="{{ route('profile') }}">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    {{ __('Profile') }}
+                                    <i class="fas fa-user fa-sm fa-fw mr-2" style="color: var(--ewf-orange);"></i>
+                                    <span style="color: var(--ewf-dark-gray);">{{ __('Profile') }}</span>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#" data-toggle="modal"
-                                    data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                    data-target="#logoutModal" style="color: #dc3545;">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
-                                    {{ __('Logout') }}
+                                    <span>{{ __('Logout') }}</span>
                                 </a>
                             </div>
                         </li>
@@ -314,8 +350,8 @@
     </div>
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
+    <a class="scroll-to-top rounded" href="#page-top" style="background-color: var(--ewf-orange);">
+        <i class="fas fa-angle-up" style="color: white;"></i>
     </a>
 
     <!-- Logout Modal-->
@@ -324,17 +360,16 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{ __('Ready to Leave?') }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: var(--ewf-dark-gray);">{{ __('Ready to Leave?') }}</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true" style="color: var(--ewf-gray);">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body" style="color: var(--ewf-dark-gray);">{{ __('Select "Logout" below if you are ready to end your current session.') }}</div>
                 <div class="modal-footer">
-                    <button class="btn btn-link" type="button" data-dismiss="modal">{{ __('Cancel') }}</button>
-                    <a class="btn btn-danger" href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{
-                        __('Logout') }}</a>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal" style="color: var(--ewf-dark-gray); border-color: var(--ewf-gray);">{{ __('Cancel') }}</button>
+                    <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();" style="background-color: var(--ewf-orange); border-color: var(--ewf-orange);">{{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -342,6 +377,16 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white" style="border-top: 1px solid #eee;">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span style="color: var(--ewf-gray);">Copyright &copy; {{ config('app.name') }} {{ date('Y') }}</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
 
     <!-- Scripts -->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
