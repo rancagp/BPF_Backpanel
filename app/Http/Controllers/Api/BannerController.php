@@ -25,7 +25,7 @@ class BannerController extends Controller
                     'id' => $banner->id,
                     'title' => $banner->title,
                     'description' => $banner->description,
-                    'image' => $banner->image ? url('img/' . $banner->image) : null,
+                    'image' => 'banners/' . basename($banner->image),
                     'order' => $banner->order,
                     'is_active' => $banner->is_active,
                     'created_at' => $banner->created_at,
@@ -59,7 +59,7 @@ class BannerController extends Controller
             // Upload gambar ke public/img/banners
             $image = $request->file('image');
             $originalName = $image->getClientOriginalName();
-            $imageName = now()->format('dmY_His') . '-' . uniqid() . '-' . $originalName;
+            $imageName = now()->format('Ymd-His') . '-' . uniqid() . '-' . $originalName;
             $targetPath = 'img/banners';
             
             // Buat direktori jika belum ada
@@ -110,7 +110,7 @@ class BannerController extends Controller
                     'id' => $banner->id,
                     'title' => $banner->title,
                     'description' => $banner->description,
-                    'image' => $banner->image ? url('img/' . $banner->image) : null,
+                    'image' => 'banners/' . basename($banner->image),
                     'order' => $banner->order,
                     'is_active' => $banner->is_active,
                     'created_at' => $banner->created_at,
@@ -150,14 +150,17 @@ class BannerController extends Controller
             // Update gambar jika ada
             if ($request->hasFile('image')) {
                 // Hapus gambar lama jika ada
-                if ($banner->image && File::exists(public_path('img/' . $banner->image))) {
-                    File::delete(public_path('img/' . $banner->image));
+                if ($banner->image) {
+                    $oldImagePath = public_path('img/' . $banner->image);
+                    if (File::exists($oldImagePath)) {
+                        File::delete($oldImagePath);
+                    }
                 }
                 
                 // Upload gambar baru
                 $image = $request->file('image');
                 $originalName = $image->getClientOriginalName();
-                $imageName = now()->format('dmY_His') . '-' . uniqid() . '-' . $originalName;
+                $imageName = now()->format('Ymd-His') . '-' . uniqid() . '-' . $originalName;
                 $targetPath = 'img/banners';
                 
                 // Buat direktori jika belum ada
