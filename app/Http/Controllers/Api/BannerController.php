@@ -25,7 +25,7 @@ class BannerController extends Controller
                     'id' => $banner->id,
                     'title' => $banner->title,
                     'description' => $banner->description,
-                    'image' => 'banners/' . basename($banner->image),
+                    'image' => basename($banner->image),
                     'order' => $banner->order,
                     'is_active' => $banner->is_active,
                     'created_at' => $banner->created_at,
@@ -73,7 +73,7 @@ class BannerController extends Controller
             $banner = Banner::create([
                 'title' => $validated['title'],
                 'description' => $validated['description'],
-                'image' => 'banners/' . $imageName,
+                'image' => $imageName,
                 'order' => $validated['order'] ?? 0,
                 'is_active' => $validated['is_active']
             ]);
@@ -110,7 +110,7 @@ class BannerController extends Controller
                     'id' => $banner->id,
                     'title' => $banner->title,
                     'description' => $banner->description,
-                    'image' => 'banners/' . basename($banner->image),
+                    'image' => basename($banner->image),
                     'order' => $banner->order,
                     'is_active' => $banner->is_active,
                     'created_at' => $banner->created_at,
@@ -169,7 +169,7 @@ class BannerController extends Controller
                 }
                 
                 $image->move(public_path($targetPath), $imageName);
-                $validated['image'] = 'banners/' . $imageName;
+                $validated['image'] = $imageName;
             }
             
             $banner->update($validated);
