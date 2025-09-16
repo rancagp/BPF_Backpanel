@@ -20,11 +20,13 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => [
-        'http://localhost:3000', // Sesuaikan dengan URL frontend
+        'http://localhost:3000',
         'http://127.0.0.1:3000',
         'http://localhost:8000',
         'http://127.0.0.1:8000',
         'https://kpf-officiall-ld8q.vercel.app',
+        'https://ewf-official.vercel.app',
+        'https://*.vercel.app',
     ],
 
     'allowed_origins_patterns' => [],
