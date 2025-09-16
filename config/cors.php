@@ -26,7 +26,6 @@ return [
         'http://127.0.0.1:8000',
         'https://kpf-officiall-ld8q.vercel.app',
         'https://ewf-official.vercel.app',
-        'https://*.vercel.app',
     ],
 
     'allowed_origins_patterns' => [],
