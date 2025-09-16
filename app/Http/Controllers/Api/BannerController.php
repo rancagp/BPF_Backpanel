@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class BannerController extends Controller
 {
@@ -25,7 +25,7 @@ class BannerController extends Controller
                     'id' => $banner->id,
                     'title' => $banner->title,
                     'description' => $banner->description,
-                    'image' => $banner->image ? url('storage/' . ltrim($banner->image, '/')) : null,
+                    'image' => $banner->image ? url('img/' . $banner->image) : null,
                     'order' => $banner->order,
                     'is_active' => $banner->is_active,
                     'created_at' => $banner->created_at,
@@ -56,14 +56,24 @@ class BannerController extends Controller
         ]);
 
         try {
-            // Upload gambar
-            $imagePath = $request->file('image')->store('banners', 'public');
+            // Upload gambar ke public/img/banners
+            $image = $request->file('image');
+            $originalName = $image->getClientOriginalName();
+            $imageName = now()->format('dmY_His') . '-' . uniqid() . '-' . $originalName;
+            $targetPath = 'img/banners';
+            
+            // Buat direktori jika belum ada
+            if (!File::exists(public_path($targetPath))) {
+                File::makeDirectory(public_path($targetPath), 0755, true);
+            }
+            
+            $image->move(public_path($targetPath), $imageName);
             
             // Simpan data banner
             $banner = Banner::create([
                 'title' => $validated['title'],
                 'description' => $validated['description'],
-                'image' => $imagePath,
+                'image' => 'banners/' . $imageName,
                 'order' => $validated['order'] ?? 0,
                 'is_active' => $validated['is_active']
             ]);
@@ -100,7 +110,7 @@ class BannerController extends Controller
                     'id' => $banner->id,
                     'title' => $banner->title,
                     'description' => $banner->description,
-                    'image' => $banner->image ? url('storage/' . ltrim($banner->image, '/')) : null,
+                    'image' => $banner->image ? url('img/' . $banner->image) : null,
                     'order' => $banner->order,
                     'is_active' => $banner->is_active,
                     'created_at' => $banner->created_at,
@@ -140,12 +150,23 @@ class BannerController extends Controller
             // Update gambar jika ada
             if ($request->hasFile('image')) {
                 // Hapus gambar lama jika ada
-                if ($banner->image && Storage::disk('public')->exists($banner->image)) {
-                    Storage::disk('public')->delete($banner->image);
+                if ($banner->image && File::exists(public_path('img/' . $banner->image))) {
+                    File::delete(public_path('img/' . $banner->image));
                 }
                 
                 // Upload gambar baru
-                $validated['image'] = $request->file('image')->store('banners', 'public');
+                $image = $request->file('image');
+                $originalName = $image->getClientOriginalName();
+                $imageName = now()->format('dmY_His') . '-' . uniqid() . '-' . $originalName;
+                $targetPath = 'img/banners';
+                
+                // Buat direktori jika belum ada
+                if (!File::exists(public_path($targetPath))) {
+                    File::makeDirectory(public_path($targetPath), 0755, true);
+                }
+                
+                $image->move(public_path($targetPath), $imageName);
+                $validated['image'] = 'banners/' . $imageName;
             }
             
             $banner->update($validated);
@@ -177,8 +198,8 @@ class BannerController extends Controller
             $banner = Banner::findOrFail($id);
             
             // Hapus gambar jika ada
-            if ($banner->image && Storage::disk('public')->exists($banner->image)) {
-                Storage::disk('public')->delete($banner->image);
+            if ($banner->image && File::exists(public_path('img/' . $banner->image))) {
+                File::delete(public_path('img/' . $banner->image));
             }
             
             $banner->delete();
