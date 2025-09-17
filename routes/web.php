@@ -12,9 +12,9 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-// Autentikasi dengan register, tanpa reset dan verify
+// Autentikasi tanpa register, reset, dan verify
 Auth::routes([
-    'register' => true,
+    'register' => false,
     'reset'    => false,
     'verify'   => true,
 ]);
