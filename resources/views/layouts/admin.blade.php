@@ -163,7 +163,20 @@
         }
         
         .sidebar .collapse-item.active,
-        .sidebar .collapse-item.active i {
+        .sidebar .collapse-item.active i,
+        .sidebar .collapse-item:focus,
+        .sidebar .collapse-item:focus i,
+        .sidebar .collapse-item:active,
+        .sidebar .collapse-item:active i,
+        .sidebar .collapse-item.active:focus,
+        .sidebar .collapse-item.active:active {
+            color: #FF0000 !important;
+            font-weight: 600 !important;
+        }
+        
+        /* Style untuk submenu Produk yang aktif */
+        .sidebar .nav-item.active .collapse-item.active,
+        .sidebar .nav-item.active .collapse-item.active i {
             color: #FF0000 !important;
             font-weight: 600 !important;
         }
@@ -218,22 +231,28 @@
 
             <!-- Nav Item - Produk Collapse Menu -->
             <li class="nav-item {{ Nav::isRoute('jfx.*') || Nav::isRoute('spa.*') ? 'active' : '' }}">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduk"
-                    aria-expanded="{{ Nav::isRoute('jfx.*') || Nav::isRoute('spa.*') ? 'true' : 'false' }}"
-                    aria-controls="collapseProduk" style="color: var(--bpf-text);">
+                <a class="nav-link {{ Nav::isRoute('jfx.*') || Nav::isRoute('spa.*') ? '' : 'collapsed' }}" 
+                   href="#" 
+                   data-toggle="collapse" 
+                   data-target="#collapseProduk"
+                   aria-expanded="{{ Nav::isRoute('jfx.*') || Nav::isRoute('spa.*') ? 'true' : 'false' }}"
+                   aria-controls="collapseProduk">
                     <i class="fas fa-box-open"></i>
                     <span>Produk</span>
                 </a>
-                <div id="collapseProduk" class="collapse" aria-labelledby="headingProduk"
-                    data-parent="#accordionSidebar">
+                <div id="collapseProduk" class="collapse {{ Nav::isRoute('jfx.*') || Nav::isRoute('spa.*') ? 'show' : '' }}" 
+                     aria-labelledby="headingProduk"
+                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Manajemen Produk:</h6>
                         <a class="collapse-item {{ Nav::isRoute('jfx.*') ? 'active' : '' }}"
-                            href="{{ route('jfx.index') }}">
+                            href="{{ route('jfx.index') }}"
+                            style="{{ Nav::isRoute('jfx.*') ? 'color: #FF0000 !important; font-weight: 600;' : '' }}">
                             Produk Multilateral JFX
                         </a>
                         <a class="collapse-item {{ Nav::isRoute('spa.*') ? 'active' : '' }}"
-                            href="{{ route('spa.index') }}">
+                            href="{{ route('spa.index') }}"
+                            style="{{ Nav::isRoute('spa.*') ? 'color: #FF0000 !important; font-weight: 600;' : '' }}">
                             Produk Bilateral (SPA)
                         </a>
                     </div>
