@@ -118,6 +118,68 @@
             border-bottom: 1px solid #eee;
             color: var(--bpf-text);
         }
+        
+        /* Sidebar Menu Item Hover Effect */
+        .sidebar .nav-item .nav-link,
+        .sidebar .nav-item .nav-link span,
+        .sidebar .nav-item .nav-link i {
+            color: #2B1A6C !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .sidebar .nav-item:hover .nav-link,
+        .sidebar .nav-item:hover .nav-link span,
+        .sidebar .nav-item:hover .nav-link i,
+        .sidebar .nav-item .nav-link:hover,
+        .sidebar .nav-item .nav-link:hover span,
+        .sidebar .nav-item .nav-link:hover i {
+            color: #FF0000 !important;
+        }
+        
+        /* Active Menu Item */
+        .sidebar .nav-item.active > .nav-link,
+        .sidebar .nav-item.active > .nav-link span,
+        .sidebar .nav-item.active > .nav-link i,
+        .sidebar .nav-item .nav-link.active,
+        .sidebar .nav-item .nav-link.active span,
+        .sidebar .nav-item .nav-link.active i {
+            color: #FF0000 !important;
+            font-weight: 600 !important;
+        }
+        
+        /* Submenu Item */
+        .sidebar .collapse-item,
+        .sidebar .collapse-item i {
+            color: #2B1A6C !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .sidebar .collapse-item:hover,
+        .sidebar .collapse-item:focus,
+        .sidebar .collapse-item:hover i,
+        .sidebar .collapse-item:focus i {
+            color: #FF0000 !important;
+            background-color: #f8f9fa !important;
+        }
+        
+        .sidebar .collapse-item.active,
+        .sidebar .collapse-item.active i {
+            color: #FF0000 !important;
+            font-weight: 600 !important;
+        }
+        
+        /* Override inline styles */
+        .sidebar .nav-link[style*="color:"],
+        .sidebar .nav-link span[style*="color:"],
+        .sidebar .nav-link i[style*="color:"] {
+            color: #2B1A6C !important;
+        }
+        
+        .sidebar .nav-link:hover[style*="color:"],
+        .sidebar .nav-link:hover span[style*="color:"],
+        .sidebar .nav-link:hover i[style*="color:"] {
+            color: #FF0000 !important;
+        }
     </style>
 </head>
 
@@ -142,8 +204,8 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item {{ Nav::isRoute('home') }}">
                 <a class="nav-link {{ Nav::isRoute('home') }}" href="{{ route('home') }}" style="color: var(--bpf-text);">
-                    <i class="fas fa-fw fa-tachometer-alt" style="color: var(--bpf-text);"></i>
-                    <span style="color: var(--bpf-text);">{{ __('Dashboard') }}</span></a>
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>{{ __('Dashboard') }}</span></a>
             </li>
 
             <!-- Divider -->
@@ -159,8 +221,8 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduk"
                     aria-expanded="{{ Nav::isRoute('jfx.*') || Nav::isRoute('spa.*') ? 'true' : 'false' }}"
                     aria-controls="collapseProduk" style="color: var(--bpf-text);">
-                    <i class="fas fa-box-open" style="color: var(--bpf-text);"></i>
-                    <span style="color: var(--bpf-text);">Produk</span>
+                    <i class="fas fa-box-open"></i>
+                    <span>Produk</span>
                 </a>
                 <div id="collapseProduk" class="collapse" aria-labelledby="headingProduk"
                     data-parent="#accordionSidebar">
@@ -177,17 +239,10 @@
                     </div>
                 </div>
             </li>
-
-            <!-- Nav Item - Profile -->
-            <li class="nav-item {{ Nav::isRoute('berita.*') }}">
-                <a class="nav-link" href="{{ route('berita.index') }}" style="color: var(--bpf-text);">
-                    <i class="fa-solid fa-newspaper" style="color: var(--bpf-text);"></i>
-                    <span style="color: var(--bpf-text);">{{ __('pengumuman') }}</span>
                 </a>
-            </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
 
             <!-- Heading -->
             <div class="sidebar-heading" style="color: var(--bpf-text);">
@@ -205,16 +260,16 @@
             <!-- Nav Item - About -->
             <li class="nav-item {{ Nav::isRoute('kategori-wakil.*') }}">
                 <a class="nav-link" href="{{route('kategori-wakil.index')}}" style="color: var(--bpf-text);">
-                    <i class="fas fa-fw fa-hands-helping" style="color: var(--bpf-text);"></i>
-                    <span style="color: var(--bpf-text);">{{ __('Wakil Pialang') }}</span>
+                    <i class="fas fa-fw fa-hands-helping"></i>
+                    <span>{{ __('Wakil Pialang') }}</span>
                 </a>
             </li>
 
             <!-- Nav Item - About -->
             <li class="nav-item {{ Nav::isRoute('banner.*') }}">
                 <a class="nav-link" href="{{route('banner.index')}}" style="color: var(--bpf-text);">
-                    <i class="fa-solid fa-images" style="color: var(--bpf-text);"></i>
-                    <span style="color: var(--bpf-text);">{{ __('Banner') }}</span>
+                    <i class="fa-solid fa-images"></i>
+                    <span>{{ __('Banner') }}</span>
                 </a>
             </li>
 
