@@ -5,13 +5,13 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="EquityWorld Futures">
+    <meta name="description" content="PT BestProfit Futures">
     <meta name="author" content="Ranca Gigih Pramuditha">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('namaPage') - EquityWorld Futures</title>
+    <title>@yield('namaPage') - PT BestProfit Futures</title>
 
     <!-- Fonts -->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
@@ -31,93 +31,92 @@
     <meta name="theme-color" content="#ffffff">
     
     <style>
-        /* Global Styles */
+        /* Global Styles - BPF */
         :root {
-            --ewf-orange: #F2AC59;
-            --ewf-gray: #9B9FA7;
-            --ewf-dark-gray: #4C4C4C;
-            --ewf-white: #FFFFFF;
-            --ewf-black: #000000;
+            --bpf-primary: #2B1A6C; /* Ungu tua (dominant) */
+            --bpf-accent: #FF0000;  /* Merah (aksi/tombol) */
+            --bpf-bg: #FFFFFF;      /* Putih (background) */
+            --bpf-text: #000000;    /* Hitam (teks) */
         }
 
         /* Sidebar Styles */
         .sidebar {
-            background-color: var(--ewf-white) !important;
+            background-color: var(--bpf-bg) !important;
         }
 
         /* Hover State */
         .sidebar .nav-item .nav-link:hover {
-            background-color: rgba(242, 172, 89, 0.1);
-            color: var(--ewf-orange) !important;
+            background-color: rgba(43, 26, 108, 0.08);
+            color: var(--bpf-primary) !important;
         }
         
         .sidebar .nav-item .nav-link:hover i,
         .sidebar .nav-item .nav-link:hover span {
-            color: var(--ewf-orange) !important;
+            color: var(--bpf-primary) !important;
         }
         
         /* Active State */
         .sidebar .nav-item.active > .nav-link,
         .sidebar .nav-item .collapse-item.active {
-            background-color: rgba(242, 172, 89, 0.1);
-            color: var(--ewf-orange) !important;
+            background-color: rgba(43, 26, 108, 0.08);
+            color: var(--bpf-primary) !important;
             font-weight: 600;
-            border-left: 3px solid var(--ewf-orange);
+            border-left: 3px solid var(--bpf-primary);
         }
         
         .sidebar .nav-item.active > .nav-link i,
         .sidebar .nav-item .collapse-item.active i {
-            color: var(--ewf-orange) !important;
+            color: var(--bpf-primary) !important;
         }
         
         /* Submenu Styles */
         .sidebar .collapse-item {
-            color: var(--ewf-dark-gray) !important;
+            color: var(--bpf-text) !important;
         }
         
         .sidebar .collapse-item:not(.active) {
-            color: var(--ewf-dark-gray) !important;
+            color: var(--bpf-text) !important;
         }
         
         .sidebar .collapse-item:hover,
         .sidebar .collapse-item:focus {
-            background-color: rgba(242, 172, 89, 0.1);
-            color: var(--ewf-orange) !important;
+            background-color: rgba(43, 26, 108, 0.08);
+            color: var(--bpf-primary) !important;
         }
         
         .sidebar .collapse-item.active {
-            background-color: rgba(242, 172, 89, 0.1);
-            color: var(--ewf-orange) !important;
+            background-color: rgba(43, 26, 108, 0.08);
+            color: var(--bpf-primary) !important;
             font-weight: 600;
         }
         
         /* Top Navigation */
         .topbar {
-            background-color: var(--ewf-white);
+            background-color: var(--bpf-bg);
             border-bottom: 1px solid #eee;
         }
 
         /* Buttons */
         .btn-primary {
-            background-color: var(--ewf-orange);
-            border-color: var(--ewf-orange);
+            background-color: var(--bpf-accent);
+            border-color: var(--bpf-accent);
         }
 
         .btn-primary:hover {
-            background-color: #e09b3f;
-            border-color: #e09b3f;
+            background-color: #CC0000;
+            border-color: #CC0000;
         }
 
         /* Text Colors */
         .text-primary {
-            color: var(--ewf-orange) !important;
+            color: var(--bpf-primary) !important;
         }
 
         /* Card Header */
         .card-header {
-            background-color: var(--ewf-white);
+            background-color: var(--bpf-bg);
             border-bottom: 1px solid #eee;
-            color: var(--ewf-dark-gray);
+            color: var(--bpf-text);
         }
     </style>
 </head>
@@ -127,12 +126,12 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-white sidebar sidebar-light accordion z-200 shadow" id="accordionSidebar" style="background-color: #ffffff !important; border-right: 1px solid #eee;">
+        <ul class="navbar-nav bg-white sidebar sidebar-light accordion z-200 shadow" id="accordionSidebar" style="background-color: var(--bpf-bg) !important; border-right: 1px solid #eee;">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                 <div class="sidebar-brand-icon">
-                    <img src="{{ asset('img/ewf-logo2.png') }}" alt="Logo EWF" class="img-fluid"
+                    <img src="{{ asset('img/bpf-logo-full.png') }}" alt="PT BestProfit Futures" class="img-fluid"
                         style="width: 1000px; height: auto;">
                 </div>
             </a>
@@ -142,16 +141,16 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item {{ Nav::isRoute('home') }}">
-                <a class="nav-link {{ Nav::isRoute('home') }}" href="{{ route('home') }}" style="color: #00000;">
-                    <i class="fas fa-fw fa-tachometer-alt" style="color: #00000;"></i>
-                    <span style="color: #00000;">{{ __('Dashboard') }}</span></a>
+                <a class="nav-link {{ Nav::isRoute('home') }}" href="{{ route('home') }}" style="color: var(--bpf-text);">
+                    <i class="fas fa-fw fa-tachometer-alt" style="color: var(--bpf-text);"></i>
+                    <span style="color: var(--bpf-text);">{{ __('Dashboard') }}</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading" style="color: #00000;">
+            <div class="sidebar-heading" style="color: var(--bpf-text);">
                 {{ __('Menu') }}
             </div>
 
@@ -159,9 +158,9 @@
             <li class="nav-item {{ Nav::isRoute('jfx.*') || Nav::isRoute('spa.*') ? 'active' : '' }}">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProduk"
                     aria-expanded="{{ Nav::isRoute('jfx.*') || Nav::isRoute('spa.*') ? 'true' : 'false' }}"
-                    aria-controls="collapseProduk" style="color: #00000;">
-                    <i class="fas fa-box-open" style="color: #00000;"></i>
-                    <span style="color: #00000;">Produk</span>
+                    aria-controls="collapseProduk" style="color: var(--bpf-text);">
+                    <i class="fas fa-box-open" style="color: var(--bpf-text);"></i>
+                    <span style="color: var(--bpf-text);">Produk</span>
                 </a>
                 <div id="collapseProduk" class="collapse" aria-labelledby="headingProduk"
                     data-parent="#accordionSidebar">
@@ -181,9 +180,9 @@
 
             <!-- Nav Item - Profile -->
             <li class="nav-item {{ Nav::isRoute('berita.*') }}">
-                <a class="nav-link" href="{{ route('berita.index') }}" style="color: #00000;">
-                    <i class="fa-solid fa-newspaper" style="color: #00000;"></i>
-                    <span style="color: #00000;">{{ __('pengumuman') }}</span>
+                <a class="nav-link" href="{{ route('berita.index') }}" style="color: var(--bpf-text);">
+                    <i class="fa-solid fa-newspaper" style="color: var(--bpf-text);"></i>
+                    <span style="color: var(--bpf-text);">{{ __('pengumuman') }}</span>
                 </a>
             </li>
 
@@ -191,7 +190,7 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading" style="color: #00000;">
+            <div class="sidebar-heading" style="color: var(--bpf-text);">
                 {{ __('Pengaturan') }}
             </div>
 
@@ -205,17 +204,17 @@
 
             <!-- Nav Item - About -->
             <li class="nav-item {{ Nav::isRoute('kategori-wakil.*') }}">
-                <a class="nav-link" href="{{route('kategori-wakil.index')}}" style="color: #00000;">
-                    <i class="fas fa-fw fa-hands-helping" style="color: #00000;"></i>
-                    <span style="color: #00000;">{{ __('Wakil Pialang') }}</span>
+                <a class="nav-link" href="{{route('kategori-wakil.index')}}" style="color: var(--bpf-text);">
+                    <i class="fas fa-fw fa-hands-helping" style="color: var(--bpf-text);"></i>
+                    <span style="color: var(--bpf-text);">{{ __('Wakil Pialang') }}</span>
                 </a>
             </li>
 
             <!-- Nav Item - About -->
             <li class="nav-item {{ Nav::isRoute('banner.*') }}">
-                <a class="nav-link" href="{{route('banner.index')}}" style="color: #00000;">
-                    <i class="fa-solid fa-images" style="color: #00000;"></i>
-                    <span style="color: #00000;">{{ __('Banner') }}</span>
+                <a class="nav-link" href="{{route('banner.index')}}" style="color: var(--bpf-text);">
+                    <i class="fa-solid fa-images" style="color: var(--bpf-text);"></i>
+                    <span style="color: var(--bpf-text);">{{ __('Banner') }}</span>
                 </a>
             </li>
 
@@ -306,18 +305,17 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name
-                                    }}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                                 <figure class="img-profile rounded-circle avatar font-weight-bold"
-                                    data-initial="{{ Auth::user()->name[0] }}" 
-                                    style="background-color: var(--ewf-orange) !important;"></figure>
+                                    data-initial="{{ Auth::user()->name[0] }}"
+                                    style="background-color: var(--bpf-primary) !important;"></figure>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="{{ route('profile') }}">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2" style="color: var(--ewf-orange);"></i>
-                                    <span style="color: var(--ewf-dark-gray);">{{ __('Profile') }}</span>
+                                    <i class="fas fa-user fa-sm fa-fw mr-2" style="color: var(--bpf-accent);"></i>
+                                    <span style="color: var(--bpf-text);">{{ __('Profile') }}</span>
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal"
@@ -350,7 +348,7 @@
     </div>
 
     <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top" style="background-color: var(--ewf-orange);">
+    <a class="scroll-to-top rounded" href="#page-top" style="background-color: var(--bpf-accent);">
         <i class="fas fa-angle-up" style="color: white;"></i>
     </a>
 
@@ -360,16 +358,16 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="color: var(--ewf-dark-gray);">{{ __('Ready to Leave?') }}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel" style="color: var(--bpf-text);">{{ __('Ready to Leave?') }}</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" style="color: var(--ewf-gray);">×</span>
+                        <span aria-hidden="true" style="color: rgba(0,0,0,.6);">×</span>
                     </button>
                 </div>
-                <div class="modal-body" style="color: var(--ewf-dark-gray);">{{ __('Select "Logout" below if you are ready to end your current session.') }}</div>
+                <div class="modal-body" style="color: var(--bpf-text);">{{ __('Select "Logout" below if you are ready to end your current session.') }}</div>
                 <div class="modal-footer">
-                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal" style="color: var(--ewf-dark-gray); border-color: var(--ewf-gray);">{{ __('Cancel') }}</button>
+                    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal" style="color: var(--bpf-text); border-color: rgba(0,0,0,.2);">{{ __('Cancel') }}</button>
                     <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();" style="background-color: var(--ewf-orange); border-color: var(--ewf-orange);">{{ __('Logout') }}</a>
+                                            document.getElementById('logout-form').submit();" style="background-color: var(--bpf-accent); border-color: var(--bpf-accent);">{{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -382,7 +380,7 @@
     <footer class="sticky-footer bg-white" style="border-top: 1px solid #eee;">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
-                <span style="color: var(--ewf-gray);">Copyright &copy; {{ config('app.name') }} {{ date('Y') }}</span>
+                <span style="color: rgba(0,0,0,.6);">Copyright &copy; {{ config('app.name') }} {{ date('Y') }}</span>
             </div>
         </div>
     </footer>
