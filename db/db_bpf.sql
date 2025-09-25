@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 18, 2025 at 02:59 AM
+-- Generation Time: Sep 25, 2025 at 03:53 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.13
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_ewf`
+-- Database: `db_bpf`
 --
 
 -- --------------------------------------------------------
@@ -36,16 +36,15 @@ CREATE TABLE `banners` (
   `is_active` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `banners`
 --
 
 INSERT INTO `banners` (`id`, `title`, `description`, `image`, `order`, `is_active`, `created_at`, `updated_at`) VALUES
-(25, 'Testing Carousel', 'Testing Carousel For Debuging', 'banners/KmDcGCWBo27fx9UyH1L4IumccKmsV4HWSvF8uPu3.png', 1, 1, '2025-09-17 03:36:34', '2025-09-17 03:59:28'),
-(29, '123', '123', 'banners/im9fxwXUs3pcDyLae4ceZcUHnwgY1iBMrEI0SHqq.png', 2, 1, '2025-09-17 07:09:16', '2025-09-17 07:18:38'),
-(30, '123123', '123123', 'banners/4wjJIfNNRwXnlXRxqRwgfGIutP7CoO1Za3pIXJRo.png', 3, 1, '2025-09-17 07:19:08', '2025-09-17 07:19:08');
+(34, 'Testing Carousel 1', 'Testing Carousel For Debugging 1', 'banners/ONAYFjNMtuxJJHxqGLTLiFQLdt49hQ4GZaR0x8P0.png', 1, 1, '2025-09-24 18:34:43', '2025-09-24 18:34:43'),
+(35, 'Testing Carousel 2', 'Testing Carousel For Debugging 2', 'banners/7vigCIpfmht6dG0crorbnPEIRBuOBSmPWrbhVdx9.png', 2, 1, '2025-09-24 18:35:08', '2025-09-24 18:35:08');
 
 -- --------------------------------------------------------
 
@@ -63,7 +62,7 @@ CREATE TABLE `beritas` (
   `isi` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `beritas`
@@ -88,7 +87,7 @@ CREATE TABLE `cache` (
   `key` varchar(255) NOT NULL,
   `value` mediumtext NOT NULL,
   `expiration` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -100,7 +99,7 @@ CREATE TABLE `cache_locks` (
   `key` varchar(255) NOT NULL,
   `owner` varchar(255) NOT NULL,
   `expiration` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -116,7 +115,7 @@ CREATE TABLE `failed_jobs` (
   `payload` longtext NOT NULL,
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -133,7 +132,7 @@ CREATE TABLE `jfxes` (
   `specs` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `jfxes`
@@ -158,7 +157,7 @@ CREATE TABLE `jobs` (
   `reserved_at` int UNSIGNED DEFAULT NULL,
   `available_at` int UNSIGNED NOT NULL,
   `created_at` int UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -177,7 +176,7 @@ CREATE TABLE `job_batches` (
   `cancelled_at` int DEFAULT NULL,
   `created_at` int NOT NULL,
   `finished_at` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -191,7 +190,7 @@ CREATE TABLE `kategori_wakil_pialang` (
   `slug` varchar(50) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `kategori_wakil_pialang`
@@ -215,7 +214,7 @@ CREATE TABLE `migrations` (
   `id` int UNSIGNED NOT NULL,
   `migration` varchar(255) NOT NULL,
   `batch` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -245,7 +244,7 @@ CREATE TABLE `password_reset_tokens` (
   `email` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -258,7 +257,7 @@ CREATE TABLE `profiles` (
   `content` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -273,7 +272,7 @@ CREATE TABLE `sessions` (
   `user_agent` text,
   `payload` longtext NOT NULL,
   `last_activity` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -290,7 +289,7 @@ CREATE TABLE `spas` (
   `specs` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `spas`
@@ -318,16 +317,14 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `last_name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Faturrahman', 'Putra', 'faturrahman86.fr@gmail.com', NULL, '$2y$12$mpJzNXGRljkc6S2T5Y7D/ux.3BIM8/7bWGQvb8Hn.3HAgWJQv/Oiq', '6XLD9gXvNqkXgGsQ8FpczOvh8r5iJ3v5bbD5kXDYoXv2V97mwLB2CpxgdtEA', NULL, '2025-07-23 05:43:43'),
-(2, 'Ranca', 'Pramuditha', 'ranca632@gmail.com', NULL, '$2y$12$pbw4VguXUjZtHwsAeDiWUufVZAZ.YqbusL.ibI/bSG3oNi1kfIXYu', 'yZcxmCxUlIvh2cgQD0Kh9ZJr8ZnMvLaKVoEk9J01aGTRbNNDsorUQLPm4Sd9', '2025-07-23 06:08:06', '2025-07-23 08:28:46'),
-(3, 'admin', 'admin', 'admin@gmail.com', NULL, '$2y$12$hMX.Dy0PMuMd1vD7a1Pp/.i4uWYLwpr.ANueohlmAYOS1mVjM42bq', NULL, '2025-09-11 07:30:40', '2025-09-11 07:30:40');
+(4, 'admin', 'admin', 'adminbpf@gmail.com', NULL, '$2y$12$i8ZB3CwUJCJqB6qN/98x6uiRwqYCrAndW2epN0FSjevFcUJZ.5b42', 'nudWDFV2P9480h1NAQP2yIN8BT944Ru8Sua6jOdFZFKB8rGyAZ47LXexDiS0', '2025-09-18 03:29:06', '2025-09-18 03:29:06');
 
 -- --------------------------------------------------------
 
@@ -343,7 +340,7 @@ CREATE TABLE `wakil_pialangs` (
   `category_id` bigint UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `wakil_pialangs`
@@ -472,7 +469,7 @@ ALTER TABLE `wakil_pialangs`
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `beritas`
@@ -526,7 +523,7 @@ ALTER TABLE `spas`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `wakil_pialangs`
