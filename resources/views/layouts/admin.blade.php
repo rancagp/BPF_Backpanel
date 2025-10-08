@@ -258,10 +258,17 @@
                     </div>
                 </div>
             </li>
-                </a>
 
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
+            <!-- Nav Item - Pengumuman -->
+            <li class="nav-item {{ Nav::isRoute('berita.*') }}">
+                <a class="nav-link" href="{{ route('berita.index') }}" style="color: var(--bpf-text);">
+                    <i class="fas fa-fw fa-bullhorn"></i>
+                    <span>Pengumuman</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
 
             <!-- Heading -->
             <div class="sidebar-heading" style="color: var(--bpf-text);">
