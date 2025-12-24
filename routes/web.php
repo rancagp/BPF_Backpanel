@@ -9,6 +9,7 @@ use App\Http\Controllers\SpaController;
 use App\Http\Controllers\WakilPialangController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KarierController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -85,6 +86,16 @@ Route::prefix('website')->name('profileWeb.')->group(function () {
     Route::get('/profile', [ProfileWebsiteController::class, 'index'])->name('index');
     Route::put('/update', [ProfileWebsiteController::class, 'storeOrUpdate'])->name('storeOrUpdate');
     Route::delete('/delete/{id}', [ProfileWebsiteController::class, 'destroy'])->name('destroy');
+});
+
+// Karier
+Route::prefix('karier')->name('karier.')->group(function () {
+    Route::get('/', [KarierController::class, 'index'])->name('index');
+    Route::get('/create', [KarierController::class, 'create'])->name('create');
+    Route::post('/', [KarierController::class, 'store'])->name('store');
+    Route::get('/{id}/edit', [KarierController::class, 'edit'])->name('edit');
+    Route::put('/{id}', [KarierController::class, 'update'])->name('update');
+    Route::delete('/{id}', [KarierController::class, 'destroy'])->name('destroy');
 });
 
 // Banner
