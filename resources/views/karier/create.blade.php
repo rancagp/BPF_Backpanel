@@ -29,18 +29,30 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="lokasi">Kota <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('lokasi') is-invalid @enderror" id="lokasi" name="lokasi" value="{{ old('lokasi') }}" required>
-                        @error('lokasi')
+                        <label for="nama_kota">Kota <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control @error('nama_kota') is-invalid @enderror" id="nama_kota" name="nama_kota" value="{{ old('nama_kota') }}" required>
+                        @error('nama_kota')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="judul">Posisi <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" value="{{ old('judul') }}" required>
-                        @error('judul')
+                        <label for="posisi">Posisi <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control @error('posisi') is-invalid @enderror" id="posisi" name="posisi" value="{{ old('posisi') }}" required>
+                        @error('posisi')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="email">Email Penerima <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
+                        @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -48,25 +60,17 @@
             </div>
 
             <div class="form-group">
-                <label for="email">Email Penerima <span class="text-danger">*</span></label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
-                @error('email')
+                <label for="responsibilities">Responsibilities <span class="text-danger">*</span></label>
+                <textarea class="form-control @error('responsibilities') is-invalid @enderror" id="responsibilities" name="responsibilities">{{ old('responsibilities') }}</textarea>
+                @error('responsibilities')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="form-group">
-                <label for="deskripsi">Responsibilities <span class="text-danger">*</span></label>
-                <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi">{{ old('deskripsi') }}</textarea>
-                @error('deskripsi')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-            </div>
-
-            <div class="form-group">
-                <label for="kualifikasi">Qualifications <span class="text-danger">*</span></label>
-                <textarea class="form-control @error('kualifikasi') is-invalid @enderror" id="kualifikasi" name="kualifikasi">{{ old('kualifikasi') }}</textarea>
-                @error('kualifikasi')
+                <label for="qualification">Qualifications <span class="text-danger">*</span></label>
+                <textarea class="form-control @error('qualification') is-invalid @enderror" id="qualification" name="qualification">{{ old('qualification') }}</textarea>
+                @error('qualification')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
@@ -107,7 +111,7 @@
 
 <script>
     tinymce.init({
-        selector: '#deskripsi, #kualifikasi',
+        selector: '#responsibilities, #qualification',
         height: 300,
         plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
         toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen preview save print | insertfile image media template link anchor codesample | ltr rtl',

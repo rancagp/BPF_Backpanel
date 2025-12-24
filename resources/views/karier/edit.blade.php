@@ -3,21 +3,20 @@
 @section('namaPage', 'Edit Lowongan Kerja')
 
 @section('main-content')
-<!-- Begin Page Content -->
-<div class="container-fluid">
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Edit Lowongan Kerja</h1>
-        <a href="{{ route('karier.index') }}" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
-            <i class="fas fa-arrow-left fa-sm text-white-50"></i> Kembali
-        </a>
-    </div>
-
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Form Edit Lowongan</h6>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="d-flex align-items-center">
+            <a href="{{ route('karier.index') }}" class="btn btn-secondary mr-3">
+                <i class="fa-solid fa-xmark"></i>
+            </a>
+            <h5 class="m-0 font-weight-bold">Form Edit Lowongan</h5>
         </div>
-        <div class="card-body">
+    </div>
+    <div class="card-body">
+        <form id="karierForm" action="{{ route('karier.update', $karier->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul class="mb-0">
@@ -28,120 +27,116 @@
                 </div>
             @endif
 
-            <form action="{{ route('karier.update', $karier->id) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
-                
-                <div class="form-group">
-                    <label for="judul">Judul Lowongan <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" value="{{ old('judul', $karier->judul) }}" required>
-                    @error('judul')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="lokasi">Lokasi <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control @error('lokasi') is-invalid @enderror" id="lokasi" name="lokasi" value="{{ old('lokasi', $karier->lokasi) }}" required>
-                            @error('lokasi')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="tipe_pekerjaan">Tipe Pekerjaan <span class="text-danger">*</span></label>
-                            <select class="form-control @error('tipe_pekerjaan') is-invalid @enderror" id="tipe_pekerjaan" name="tipe_pekerjaan" required>
-                                <option value="">Pilih Tipe Pekerjaan</option>
-                                <option value="Full Time" {{ old('tipe_pekerjaan', $karier->tipe_pekerjaan) == 'Full Time' ? 'selected' : '' }}>Full Time</option>
-                                <option value="Part Time" {{ old('tipe_pekerjaan', $karier->tipe_pekerjaan) == 'Part Time' ? 'selected' : '' }}>Part Time</option>
-                                <option value="Kontrak" {{ old('tipe_pekerjaan', $karier->tipe_pekerjaan) == 'Kontrak' ? 'selected' : '' }}>Kontrak</option>
-                                <option value="Magang" {{ old('tipe_pekerjaan', $karier->tipe_pekerjaan) == 'Magang' ? 'selected' : '' }}>Magang</option>
-                            </select>
-                            @error('tipe_pekerjaan')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nama_kota">Kota <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control @error('nama_kota') is-invalid @enderror" id="nama_kota" name="nama_kota" value="{{ old('nama_kota', $karier->nama_kota) }}" required>
+                        @error('nama_kota')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="deskripsi">Deskripsi Pekerjaan <span class="text-danger">*</span></label>
-                    <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="5" required>{{ old('deskripsi', $karier->deskripsi) }}</textarea>
-                    @error('deskripsi')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="posisi">Posisi <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control @error('posisi') is-invalid @enderror" id="posisi" name="posisi" value="{{ old('posisi', $karier->posisi) }}" required>
+                        @error('posisi')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="kualifikasi">Kualifikasi <span class="text-danger">*</span></label>
-                    <textarea class="form-control @error('kualifikasi') is-invalid @enderror" id="kualifikasi" name="kualifikasi" rows="5" required>{{ old('kualifikasi', $karier->kualifikasi) }}</textarea>
-                    <small class="form-text text-muted">Gunakan tanda titik (.) untuk setiap poin kualifikasi</small>
-                    @error('kualifikasi')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="email">Email Penerima <span class="text-danger">*</span></label>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $karier->email) }}" required>
+                        @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="tanggal_berakhir">Tanggal Berakhir <span class="text-danger">*</span></label>
-                    <input type="date" class="form-control @error('tanggal_berakhir') is-invalid @enderror" id="tanggal_berakhir" name="tanggal_berakhir" value="{{ old('tanggal_berakhir', $karier->tanggal_berakhir->format('Y-m-d')) }}" required>
-                    @error('tanggal_berakhir')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+            <div class="form-group">
+                <label for="responsibilities">Responsibilities <span class="text-danger">*</span></label>
+                <textarea class="form-control @error('responsibilities') is-invalid @enderror" id="responsibilities" name="responsibilities">{{ old('responsibilities', $karier->responsibilities) }}</textarea>
+                @error('responsibilities')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-                <div class="form-group">
-                    <label for="status">Status <span class="text-danger">*</span></label>
-                    <select class="form-control @error('status') is-invalid @enderror" id="status" name="status" required>
-                        <option value="Dibuka" {{ old('status', $karier->status) == 'Dibuka' ? 'selected' : '' }}>Dibuka</option>
-                        <option value="Ditutup" {{ old('status', $karier->status) == 'Ditutup' ? 'selected' : '' }}>Ditutup</option>
-                    </select>
-                    @error('status')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+            <div class="form-group">
+                <label for="qualification">Qualifications <span class="text-danger">*</span></label>
+                <textarea class="form-control @error('qualification') is-invalid @enderror" id="qualification" name="qualification">{{ old('qualification', $karier->qualification) }}</textarea>
+                @error('qualification')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i> Simpan Perubahan
-                    </button>
-                    <a href="{{ route('karier.index') }}" class="btn btn-secondary">
-                        <i class="fas fa-times"></i> Batal
-                    </a>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmModal">
+                    Simpan Perubahan
+                </button>
+            </div>
+
+            <!-- Modal Konfirmasi -->
+            <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="confirmModalLabel">Konfirmasi</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Apakah Anda yakin ingin menyimpan perubahan Lowongan ini?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-primary" id="confirmSubmit">Ya, Simpan</button>
+                        </div>
+                    </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </div>
-<!-- /.container-fluid -->
 @endsection
 
 @push('scripts')
-<!-- Summernote -->
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<!-- TinyMCE -->
+<script src="https://cdn.tiny.cloud/1/zxbb8ss6iclrki0fopl5gcne91neckqc4e004atop3wf0mi2/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script>
 
 <script>
-    $(document).ready(function() {
-        // Initialize Summernote
-        $('#deskripsi, #kualifikasi').summernote({
-            height: 200,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['para', ['ul', 'ol']],
-                ['insert', ['link']],
-                ['view', ['fullscreen', 'codeview', 'help']]
-            ]
-        });
+    tinymce.init({
+        selector: '#responsibilities, #qualification',
+        height: 300,
+        plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
+        toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen preview save print | insertfile image media template link anchor codesample | ltr rtl',
+        menubar: 'file edit view insert format tools table help',
+        toolbar_mode: 'sliding',
+        quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+        image_advtab: true,
+        branding: false,
+        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+        setup: function(editor) {
+            editor.on('change', function() {
+                editor.save();
+            });
+        }
+    });
 
-        // Show file name on file input change
-        $(".custom-file-input").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-        });
+    // Submit form after confirmation
+    document.getElementById('confirmSubmit').addEventListener('click', function() {
+        // Update textareas with TinyMCE content before form submission
+        if (typeof tinymce !== 'undefined') {
+            tinymce.triggerSave();
+        }
+        document.getElementById('karierForm').submit();
     });
 </script>
 @endpush

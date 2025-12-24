@@ -33,7 +33,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <h5 class="m-0 text-gray-800 font-weight-bold">Daftar Lowongan Pekerjaan</h5>
             <a href="{{ route('karier.create') }}" class="btn btn-primary btn-sm shadow">
-                 Tambah Lowongan
+                Tambah Lowongan
             </a>
         </div>
     </div>
@@ -45,25 +45,21 @@
                     <tr>
                         <th width="5%" class="text-center align-middle">No</th>
                         <th width="20%" class="text-left align-middle">Kota</th>
-                        <th width="30%" class="text-left align-middle">Posisi</th>
-                        <th width="25%" class="text-left align-middle">Email</th>
-                        <th width="20%" class="text-center align-middle">Aksi</th>
+                        <th width="40%" class="text-left align-middle">Posisi</th>
+                        <th width="20%" class="text-left align-middle">Email</th>
+                        <th width="15%" class="text-center align-middle">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($karier as $item)
                     <tr>
                         <td class="text-center align-middle">{{ $loop->iteration }}</td>
-                        <td class="text-left align-middle">{{ $item->lokasi }}</td>
+                        <td class="text-left align-middle">{{ $item->nama_kota }}</td>
                         <td class="text-left align-middle">
-                            {{ $item->judul }}
-                            <br>
-                            <span class="badge {{ $item->status == 'Dibuka' ? 'badge-success' : 'badge-secondary' }}">
-                                {{ $item->tipe_pekerjaan }}
-                            </span>
+                            {{ $item->posisi }}
                         </td>
                         <td class="text-left align-middle">
-                            {{ $item->email ?? '-' }}
+                            {{ $item->email }}
                         </td>
                         <td class="align-middle">
                             <div class="d-flex justify-content-center">
@@ -90,7 +86,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            Apakah Anda yakin ingin menghapus lowongan <strong>"{{ $item->judul }}"</strong>?
+                                            Apakah Anda yakin ingin menghapus lowongan <strong>"{{ $item->posisi }}"</strong> di <strong>{{ $item->nama_kota }}</strong>?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
